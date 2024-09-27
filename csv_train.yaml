@@ -1,0 +1,51 @@
+model_config:
+  block_size: 32
+  num_blks: 3
+  head_size: 16
+  n_embd: 128
+  n_head: 8
+  n_layer: 8
+  dropout: 0.1
+  img_size: 96
+  patch_size: 16
+  image_embed_dim: 512
+  emb_dropout: 0.1
+  blk_dropout: 0.1
+
+data_config:
+  image_col: b64string_images
+  caption_col: caption
+  pad_token: <pad>
+  # Use 90% of data for training, rest for validation
+  train_split_ratio: 0.9
+  vocab_path: vocab.txt
+  data_path: images/inputs.csv
+  # valid values: 'csv' or 'coco'
+  # 'csv' uses data in 'data_path'
+  # 'coco' uses ~18k (image,caption) pairs from COCO dataset
+  dataset: csv
+  padding: longest
+  max_seq_length: null
+
+trainer_config:
+  lr: 1e-3
+  eval_interval: 10
+  eval_iters: 40
+  max_iters: 100
+  train_batch_size: 16
+  eval_batch_size: 8
+  epochs: 1
+  use_wandb: False
+  wandb_project: enigma-seemore
+  snapshot_dir: snapshots
+  # Possible values: latest, null (None), number representing epoch
+  # latest will load the most recent training snapshot
+  # null will not load from a past snapshot even if found
+  # number (e.g. 1) will load the snapshot corresponding to the epoch number
+  snapshot_load_strategy: null
+  compile: False
+  cuda_graph: False
+  use_amp: True
+  log_verbose: False
+  profile_results_dir: profile_results
+  profiler_mode: null

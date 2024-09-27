@@ -1,0 +1,9 @@
+.venv
+**/__pycache__
+**/snapshots
+**/wandb
+**/.hydra
+*.log
+outputs
+**/profile_results
+.DS_Store

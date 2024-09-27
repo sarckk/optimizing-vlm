@@ -1,8 +1,9 @@
 import torch
 import torch.nn as nn
 from torch.nn import functional as F
-from block import Block
-from multimodal_projector import MultiModalProjector
+
+from .block import Block
+from .multimodal_projector import MultiModalProjector
 
 class DecoderLanguageModel(nn.Module):
     def __init__(self, n_embd, image_embed_dim, vocab_size, num_heads, n_layer, use_images=False):

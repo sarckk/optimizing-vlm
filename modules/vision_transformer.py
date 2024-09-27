@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
-from patch_embeddings import PatchEmbeddings
-from block import Block
+from .patch_embeddings import PatchEmbeddings
+from .block import Block
 
 class ViT(nn.Module):
     def __init__(self, img_size, patch_size, num_hiddens, num_heads, num_blks, emb_dropout, blk_dropout):
